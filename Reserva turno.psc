@@ -1,88 +1,58 @@
-Algoritmo Reserva turno
-	Algoritmo turnoProducto
-		
-		Definir turnoLunesManana, turnoLunesTarde, turnoMartesManana, turnoMartesTarde como Cadena
-		Definir producto1, producto2, producto3 como Cadena
-		Definir opcionMenu como Entero
-		
-		turnoLunesManana <- ""
-		turnoLunesTarde <- ""
-		turnoMartesManana <- ""
-		turnoMartesTarde <- ""
-		producto1 <- ""
-		producto2 <- ""
-		producto3 <- ""
-		Escribir "+--------------------------------------------------------------------+"
-		Escribir "| Este pseudocódigo muestra el funcionamiento del sistema de reserva |"
-		escribir "| de turnos de una manera simple, así como ingreso de productos      |"
-		Escribir "| para dar una idea de las opciones del menú y datos de carga        |"
-		Escribir "+--------------------------------------------------------------------+"
-		
-		Repetir
-			Mostrar "1. Reservar turno"
-			Mostrar "2. Cargar producto"
-			Mostrar "0. Salir"
-			Leer opcionMenu
-			
-			Si opcionMenu = 1 Entonces
-				Mostrar "Seleccione el día para el turno (1: Lunes, 2: Martes):" // en versión final, todos los días de la semana
-				Leer diaElegido
-				
-				Mostrar "Seleccione la parte del día (1: Mañana, 2: Tarde):" // en versión final, rango de horarios
-				Leer parteDelDia
-				
-				Si diaElegido = 1 Y parteDelDia = 1 Entonces
-					Si turnoLunesManana = "" Entonces
-						turnoLunesManana <- "Reservado"
-						Mostrar "Turno reservado exitosamente."
-					Sino
-						Mostrar "El turno seleccionado ya está ocupado. Por favor, elija otro."
-					Fin Si
-				Fin Si
-				
-				Si diaElegido = 1 Y parteDelDia = 2 Entonces
-					Si turnoLunesTarde = "" Entonces
-						turnoLunesTarde <- "Reservado"
-						Mostrar "Turno reservado exitosamente."
-					Sino
-						Mostrar "El turno seleccionado ya está ocupado. Por favor, elija otro."
-					Fin Si
-				Fin Si
-				Si diaElegido = 2 Y parteDelDia = 1 Entonces
-					Si turnoMartesManana = "" Entonces
-						turnoMartesManana <- "Reservado"
-						Mostrar "Turno reservado exitosamente."
-					Sino
-						Mostrar "El turno seleccionado ya está ocupado. Por favor, elija otro."
-					Fin Si
-				Fin Si						
-				Si diaElegido = 2 Y parteDelDia = 2 Entonces
-					Si turnoMartesTarde = "" Entonces
-						turnoMartesTarde <- "Reservado"
-						Mostrar "Turno reservado exitosamente."
-					Sino
-						Mostrar "El turno seleccionado ya está ocupado. Por favor, elija otro."
-					Fin Si
-				Fin Si
-			Fin si
-			Si opcionMenu = 2 Entonces
-				Mostrar "Ingrese el nombre del producto:" // en versión final, se guarda en algún repositorio
-				Leer nombreProducto
-				
-				Si producto1 = "" Entonces
-					producto1 <- nombreProducto
-				Sino Si producto2 = "" Entonces
-						producto2 <- nombreProducto
-					Sino Si producto3 = "" Entonces
-							producto3 <- nombreProducto
-						Sino
-							Mostrar "Ya se han ingresado tres productos. No se pueden agregar más." // en versión final, infinitos
-						Fin Si
-						
-					Fin Si
-				fin si
-			fin si
-		Hasta que opcionMenu = 0
-			
+Algoritmo ChefADomicilio
+    Definir dia, turno, menu Como Entero
+    Definir mensaje Como Cadena
+	
+    Escribir "Bienvenido al servicio de Chef a Domicilio"
+	
+    // Pedir al usuario el dÃ­a
+    Escribir "Por favor, seleccione el dÃ­a para su reserva:"
+    Escribir "1. Jueves"
+    Escribir "2. Viernes"
+    Escribir "3. SÃ¡bado"
+    Escribir "4. Domingo"
+    Leer dia
+	
+    // Verificar si el dÃ­a seleccionado es vÃ¡lido
+    Segun dia Hacer
+        1, 2, 3:
+            Escribir "Por favor, seleccione el turno:"
+            Escribir "1. Noche"
+            Leer turno
+            Si turno <> 1 Entonces
+                mensaje <- "Lo sentimos, dÃ­a no disponible para el turno seleccionado."
+            Sino
+                ReservarMenu(menu, mensaje)
+            FinSi
+        4:
+            Escribir "Por favor, seleccione el turno:"
+            Escribir "2. MediodÃ­a"
+            Leer turno
+            Si turno <> 2 Entonces
+                mensaje <- "Lo sentimos, dÃ­a no disponible para el turno seleccionado."
+            Sino
+                ReservarMenu(menu, mensaje)
+            FinSi
+        Otro:
+            mensaje <- "Lo sentimos, dÃ­a no vÃ¡lido."
+    FinSegun
+
+	
 FinAlgoritmo
-FinAlgoritmo
+
+Funcion ReservarMenu(menu, mensaje)
+// Pedir al usuario que elija un menÃº
+Escribir "MenÃºs disponibles:"
+Escribir "1. MenÃº 1"
+Escribir "2. MenÃº 2"
+Escribir "3. MenÃº 3"
+Leer menu
+Segun menu Hacer
+	1: mensaje <- "Reserva confirmada. MenÃº seleccionado: MenÃº 1."
+	2: mensaje <- "Reserva confirmada. MenÃº seleccionado: MenÃº 2."
+	3: mensaje <- "Reserva confirmada. MenÃº seleccionado: MenÃº 3."
+	De Otro Modo:
+		mensaje <- "Desconocido"
+FinSegun
+// Mostrar mensaje final
+Escribir mensaje
+FinFuncion
