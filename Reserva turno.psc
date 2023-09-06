@@ -19,7 +19,7 @@ Algoritmo ChefADomicilio
             Escribir "1. Noche"
             Leer turno
             Si turno <> 1 Entonces
-                mensaje <- "Lo sentimos, día no disponible para el turno seleccionado."
+                Escribir "Lo sentimos, día no disponible para el turno seleccionado."
             Sino
                 ReservarMenu(menu, mensaje)
             FinSi
@@ -28,12 +28,12 @@ Algoritmo ChefADomicilio
             Escribir "2. Mediodía"
             Leer turno
             Si turno <> 2 Entonces
-                mensaje <- "Lo sentimos, día no disponible para el turno seleccionado."
+                Escribir "Lo sentimos, día no disponible para el turno seleccionado."
             Sino
                 ReservarMenu(menu, mensaje)
             FinSi
         Otro:
-            mensaje <- "Lo sentimos, día no válido."
+            Escribir "Lo sentimos, día no válido."
     FinSegun
 
 	
@@ -46,13 +46,11 @@ Escribir "1. Menú 1"
 Escribir "2. Menú 2"
 Escribir "3. Menú 3"
 Leer menu
-Segun menu Hacer
-	1: mensaje <- "Reserva confirmada. Menú seleccionado: Menú 1."
-	2: mensaje <- "Reserva confirmada. Menú seleccionado: Menú 2."
-	3: mensaje <- "Reserva confirmada. Menú seleccionado: Menú 3."
+   Segun menu Hacer
+	1: Escribir "Reserva confirmada. Menú seleccionado: Menú 1."
+	2: Escribir "Reserva confirmada. Menú seleccionado: Menú 2."
+	3: Escribir "Reserva confirmada. Menú seleccionado: Menú 3."
 	De Otro Modo:
-		mensaje <- "Desconocido"
-FinSegun
-// Mostrar mensaje final
-Escribir mensaje
+		Escribir "Menú Desconocido"
+   FinSegun
 FinFuncion
